@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
 * {
   box-sizing: border-box;
@@ -121,9 +121,11 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
+
   width: 10px;
   height: 10px;
   background: rgb(47, 47, 47);
+  border-radius: 50%;
 }
 
 .slider::-moz-range-thumb {
