@@ -25,14 +25,17 @@ let isEraser = false;
 // let drawnArray = [];
 
 // Formatting Brush Size
-// function displayBrushSize() {
-
-// }
+function displayBrushSize() {
+  brushSlider.value < 10
+    ? (brushSize.textContent = `0${brushSlider.value}`)
+    : (brushSize.textContent = brushSlider.value);
+}
 
 // Setting Brush Size
-// brushSlider.addEventListener('change', () => {
-
-// });
+brushSlider.addEventListener('change', () => {
+  currentSize = brushSlider.value;
+  displayBrushSize();
+});
 
 // Setting Brush Color
 brushColorBtn.addEventListener('change', () => {
@@ -57,15 +60,14 @@ eraser.addEventListener('click', () => {
 });
 
 // // Switch back to Brush
-// function switchToBrush() {
-//   isEraser = false;
-//   activeToolEl.textContent = 'Brush';
-//   brushIcon.style.color = 'black';
-//   eraser.style.color = 'white';
-//   currentColor = `#${brushColorBtn.value}`;
-//   currentSize = 10;
-
-// }
+function switchToBrush() {
+  isEraser = false;
+  activeToolEl.textContent = 'Brush';
+  brushIcon.style.color = 'black';
+  eraser.style.color = 'white';
+  currentColor = `#${brushColorBtn.value}`;
+  currentSize = 10;
+}
 
 // Create Canvas
 function createCanvas() {
@@ -74,6 +76,7 @@ function createCanvas() {
   context.fillStyle = bucketColor;
   context.fillRect(0, 0, canvas.width, canvas.height);
   body.appendChild(canvas);
+  switchToBrush();
 }
 
 // // Clear Canvas
@@ -197,8 +200,8 @@ canvas.addEventListener('mouseup', () => {
 //   setTimeout(switchToBrush, 1500);
 // });
 
-// // Event Listener
-// brushIcon.addEventListener('click', switchToBrush);
+// Event Listener
+brushIcon.addEventListener('click', switchToBrush);
 
 // On Load
 createCanvas();
