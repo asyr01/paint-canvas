@@ -13,6 +13,9 @@ const downloadBtn = document.getElementById('download');
 const { body } = document;
 
 // Global Variables
+const canvas = document.createElement('canvas');
+canvas.id = 'canvas';
+const contexxt = canvas.getContext('2d');
 
 let currentSize = 10;
 let bucketColor = '#FFFFFF';
