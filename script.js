@@ -108,17 +108,17 @@ function createCanvas() {
 // }
 
 // // Store Drawn Lines in DrawnArray
-// function storeDrawn(x, y, size, color, erase) {
-//   const line = {
-//     x,
-//     y,
-//     size,
-//     color,
-//     erase,
-//   };
-//   console.log(line);
-//   drawnArray.push(line);
-// }
+function storeDrawn(x, y, size, color, erase) {
+  const line = {
+    x,
+    y,
+    size,
+    color,
+    erase,
+  };
+  console.log(line);
+  drawnArray.push(line);
+}
 
 // Get Mouse Position
 function getMousePosition(event) {
@@ -136,7 +136,6 @@ canvas.addEventListener('mousedown', (event) => {
   context.moveTo(currentPosition.x, currentPosition.y);
   context.beginPath();
   context.lineWidth = currentSize;
-  context.lineCap = 'round';
   context.strokeStyle = currentColor;
 });
 
@@ -146,15 +145,15 @@ canvas.addEventListener('mousemove', (event) => {
     const currentPosition = getMousePosition(event);
     context.lineTo(currentPosition.x, currentPosition.y);
     context.stroke();
-    //   storeDrawn(
-    //     currentPosition.x,
-    //     currentPosition.y,
-    //     currentSize,
-    //     currentColor,
-    //     isEraser,
-    //   );
-    // } else {
-    //   storeDrawn(undefined);
+    storeDrawn(
+      currentPosition.x,
+      currentPosition.y,
+      currentSize,
+      currentColor,
+      isEraser
+    );
+  } else {
+    storeDrawn(undefined);
   }
 });
 
