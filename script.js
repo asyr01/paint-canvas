@@ -62,6 +62,7 @@ eraser.addEventListener('click', () => {
 
 // // Switch back to Brush
 function switchToBrush() {
+  activeToolEl.style.background = 'rgb(82, 82, 82)';
   isEraser = false;
   activeToolEl.textContent = 'Brush';
   brushIcon.style.color = 'black';
@@ -88,6 +89,7 @@ clearCanvasBtn.addEventListener('click', () => {
   drawnArray = [];
   // Active Tool
   activeToolEl.textContent = 'Canvas Cleared';
+  activeToolEl.style.background = 'green';
   setTimeout(switchToBrush, 1500);
 });
 
@@ -162,13 +164,13 @@ canvas.addEventListener('mouseup', () => {
   isMouseDown = false;
 });
 
-// // Save to Local Storage
-// saveStorageBtn.addEventListener('click', () => {
-
-//   // Active Tool
-//   activeToolEl.textContent = 'Canvas Saved';
-//   setTimeout(switchToBrush, 1500);
-// });
+// Save to Local Storage
+saveStorageBtn.addEventListener('click', () => {
+  localStorage.setItem('savedCanvas', JSON.stringify(drawnArray));
+  // Active Tool
+  activeToolEl.textContent = 'Canvas Saved';
+  setTimeout(switchToBrush, 1500);
+});
 
 // // Load from Local Storage
 // loadStorageBtn.addEventListener('click', () => {
