@@ -196,13 +196,16 @@ clearStorageBtn.addEventListener('click', () => {
   setTimeout(switchToBrush, 1500);
 });
 
-// // Download Image
-// downloadBtn.addEventListener('click', () => {
-
-//   // Active Tool
-//   activeToolEl.textContent = 'Image File Saved';
-//   setTimeout(switchToBrush, 1500);
-// });
+// Download Image
+downloadBtn.addEventListener('click', () => {
+  let i = 0;
+  (downloadBtn.href = canvas.toDataURL('image/jpeg', 1.0)), 1;
+  downloadBtn.download = `paint-draw.jpeg`;
+  // Active Tool
+  activeToolEl.textContent = 'Image File Saved';
+  i++;
+  setTimeout(switchToBrush, 1500);
+});
 
 // Event Listener
 brushIcon.addEventListener('click', switchToBrush);
