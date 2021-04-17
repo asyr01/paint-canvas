@@ -75,7 +75,7 @@ body {
   margin-left: 8px;
 }
 
-.brush {
+.inp .brush {
   background-color: rgb(114, 114, 114);
   height: 44px;
   width: 345px;
