@@ -6,6 +6,7 @@ const brushSize = document.getElementById('brush-size');
 const brushSlider = document.getElementById('brush-slider');
 const bucketColorBtn = document.getElementById('bucket-color');
 const eraser = document.getElementById('eraser');
+const pen = document.getElementById('pen');
 const clearCanvasBtn = document.getElementById('clear-canvas');
 const saveStorageBtn = document.getElementById('save-storage');
 const loadStorageBtn = document.getElementById('load-storage');
@@ -19,8 +20,9 @@ canvas.id = 'canvas';
 const context = canvas.getContext('2d');
 
 let currentSize = 10;
-let bucketColor = '#FFFFFF';
-let currentColor = '#A51DAB';
+let bucketColor = '#000000';
+let currentColor = '#ffffff';
+let isRounded = true;
 let isEraser = false;
 let isMouseDown = false;
 let drawnArray = [];
@@ -51,6 +53,12 @@ bucketColorBtn.addEventListener('change', () => {
   restoreCanvas();
 });
 
+// Pen
+pen.addEventListener('click', () => {
+  isRounded = !isRounded;
+  switchToBrush();
+});
+
 // // Eraser
 eraser.addEventListener('click', () => {
   isEraser = true;
@@ -63,6 +71,11 @@ eraser.addEventListener('click', () => {
 
 // // Switch back to Brush
 function switchToBrush() {
+  if (isRounded) {
+    context.lineCap = 'round';
+  } else {
+    context.lineCap = 'square';
+  }
   activeToolEl.style.background = 'rgb(82, 82, 82)';
   isEraser = false;
   activeToolEl.textContent = 'Brush';
@@ -140,6 +153,7 @@ function getMousePosition(event) {
 canvas.addEventListener('mousedown', (event) => {
   isMouseDown = true;
   const currentPosition = getMousePosition(event);
+
   context.moveTo(currentPosition.x, currentPosition.y);
   context.beginPath();
   context.lineWidth = currentSize;
